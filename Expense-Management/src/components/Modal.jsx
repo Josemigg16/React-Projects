@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import closeModal from '../img/cerrar.svg'
 import Message from './Message'
 
-const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
+const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense, saveEditedExpense, editingExpense, setEditingExpense }) => {
 
     const [name, setName] = useState('')
     const [amount, setAmount] = useState('')
     const [category, setCategory] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
+
+    useEffect(() => {
+        setName(editingExpense.name)
+        setAmount(editingExpense.amount)
+        setCategory(editingExpense.category)
+    }, [editingExpense.id])
 
     const handleCloseModal = () => {
         setAnimateModal(false)
@@ -23,7 +29,11 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense }) => {
             return
         }
         setErrorMessage('')
-        saveExpense({name, amount, category})
+        if (editingExpense.id) {
+            saveEditedExpense({ name, amount, category })
+        } else {
+            saveExpense({ name, amount, category })
+        }
         handleCloseModal()
     }
 

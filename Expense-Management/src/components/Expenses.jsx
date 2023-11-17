@@ -1,13 +1,26 @@
 import Expense from "./Expense"
 
-const Expenses = ({ expenses }) => {
+const Expenses = ({ expenses, editExpense, deleteExpense }) => {
     return (
         <div className='listado-gastos contenedor'>
             <>
-            <h2>Expenses</h2>
+                {
+                    expenses.length < 1
+                        ? (
+                            <h2>There are not expenses yet</h2>
+                        )
+                        : (
+                            <h2>Expenses</h2>
+                        )
+                }
                 {
                     expenses.map(expense => (
-                        <Expense key={expense.id} expense={expense} />
+                        <Expense
+                            key={expense.id}
+                            expense={expense}
+                            editExpense={editExpense}
+                            deleteExpense={deleteExpense}
+                        />
                     ))
                 }
             </>

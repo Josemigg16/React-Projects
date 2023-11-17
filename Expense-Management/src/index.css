@@ -45,6 +45,7 @@ h2 {
 
 header {
     background-color: var(--azul);
+    min-width: 469px;
 }
 
 header h1 {

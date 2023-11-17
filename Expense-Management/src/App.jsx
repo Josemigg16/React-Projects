@@ -10,6 +10,17 @@ function App() {
   const [modal, setModal] = useState(false)
   const [animateModal, setAnimateModal] = useState(false)
   const [expenses, setExpenses] = useState([])
+  const [editingExpense, setEditingExpense] = useState({})
+
+  const editExpense = expense => {
+    handleModal()
+    setEditingExpense(expense)
+  }
+  const deleteExpense = expense => {
+    const newList = expenses.filter(actExpense => actExpense.id !== expense.id)
+    setExpenses(newList)
+  }
+
   const handleModal = () => {
     setModal(true)
     setTimeout(() => {
@@ -21,7 +32,16 @@ function App() {
     expense.id = crypto.randomUUID()
     expense.date = Date.now()
     setExpenses([...expenses, expense])
-    setModal(false)
+  }
+  const saveEditedExpense = editedExpense => {
+    const { name, amount, category } = editedExpense
+    const editedList = expenses.map(expense => {
+      return expense.id === editingExpense.id
+        ? { ...editingExpense, name, amount, category }
+        : expense
+    })
+    setExpenses(editedList)
+    setEditingExpense({})
   }
 
 
@@ -37,7 +57,11 @@ function App() {
       {validBudget && (
         <>
           <main>
-            <Expenses expenses={expenses} />
+            <Expenses
+              expenses={expenses}
+              editExpense={editExpense}
+              deleteExpense={deleteExpense}
+            />
           </main>
           <div className='nuevo-gasto'>
             <img src={newExpenseIcon} alt="New Expense Icon"
@@ -48,10 +72,14 @@ function App() {
       )}
       {modal && (
         <div>
-          <Modal setModal={setModal}
+          <Modal
+            setModal={setModal}
             animateModal={animateModal}
             setAnimateModal={setAnimateModal}
             saveExpense={saveExpense}
+            saveEditedExpense={saveEditedExpense}
+            editingExpense={editingExpense}
+            setEditingExpense={setEditingExpense}
           />
         </div>
       )}

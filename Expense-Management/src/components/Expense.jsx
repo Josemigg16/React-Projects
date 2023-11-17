@@ -5,6 +5,7 @@ import {
     SwipeAction,
     TrailingActions,
 } from 'react-swipeable-list';
+import 'react-swipeable-list/dist/styles.css'
 import { formatDate } from "../helpers/FormatDate"
 import SavingIcon from '../img/icono_ahorro.svg'
 import HomeIcon from '../img/icono_casa.svg'
@@ -23,19 +24,19 @@ const dictIcons = {
     health: HealthIcon,
     suscriptions: SuscriptionsIcon
 }
-const leadingActions = () => (
+const leadingActions = ({ expense, editExpense }) => (
     <LeadingActions>
-        <SwipeAction onClick={() => console.info('swipe action triggered')}>
-            Action name
+        <SwipeAction onClick={() => editExpense(expense)}>
+            Edit
         </SwipeAction>
     </LeadingActions>
 );
 
-const trailingActions = () => (
+const trailingActions = ({ expense, deleteExpense }) => (
     <TrailingActions>
         <SwipeAction
             destructive={true}
-            onClick={() => console.info('swipe delete triggered')}
+            onClick={() => deleteExpense(expense)}
         >
             Delete
         </SwipeAction>
@@ -43,12 +44,12 @@ const trailingActions = () => (
 );
 
 
-const Expense = ({ expense }) => {
+const Expense = ({ expense, editExpense, deleteExpense }) => {
     return (
         <SwipeableList>
             <SwipeableListItem
-                leadingActions={leadingActions()}
-                trailingActions={trailingActions()}
+                leadingActions={leadingActions({ expense, editExpense })}
+                trailingActions={trailingActions({ expense, deleteExpense })}
             >
                 <div className='gasto sombra' key={expense.id}>
                     <div className="contenido-gasto">
