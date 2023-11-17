@@ -5,6 +5,7 @@
     --gris: #94a3b8;
     --gris-oscuro: #64748b;
     --negro: #000;
+    --rojo: #bd2727;
 }
 
 body {
@@ -208,7 +209,7 @@ header h1 {
 }
 .contenido-presupuesto p.negativo,
 .contenido-presupuesto p.negativo span {
-    color: red;
+    color: var(--rojo);
 }
 .contenido-presupuesto span {
     font-weight: 900;
