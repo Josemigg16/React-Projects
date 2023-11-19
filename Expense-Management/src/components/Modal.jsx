@@ -20,6 +20,7 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense, saveEdite
         setTimeout(() => {
             setModal(false)
 
+            setEditingExpense({})
         }, 150);
     }
     const handleSubmit = e => {
@@ -73,11 +74,11 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense, saveEdite
                 </div>
                 <div className='campo'>
                     <label htmlFor="category">Category</label>
-                    <select id="categoty"
+                    <select id="category"
                         value={category}
                         onChange={e => setCategory(e.target.value)}
                     >
-                        <option value="">-- Seleccione --</option>
+                        <option value="">-- Select --</option>
                         <option value="saving"> Ahorro </option>
                         <option value="food"> Food </option>
                         <option value="home"> Home </option>
@@ -89,7 +90,7 @@ const Modal = ({ setModal, animateModal, setAnimateModal, saveExpense, saveEdite
                     </select>
                 </div>
 
-                <input type="submit" value="Add Expense"
+                <input type="submit" value={editingExpense.name ? 'Edit expense' : 'Add expense'}
 
                 />
 

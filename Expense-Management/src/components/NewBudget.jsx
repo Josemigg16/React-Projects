@@ -7,10 +7,11 @@ const NewBudget = ({ budget, setBudget, setValidBudget }) => {
 
     const handleBudget = (e) => {
         e.preventDefault()
-        if (!budget || budget < 0) {
+        if (!budget || budget <= 0) {
             setMessage('Budget is not valid')
             return
         }
+        console.log(budget)
         setMessage('')
         setValidBudget(true)
     }
@@ -24,7 +25,11 @@ const NewBudget = ({ budget, setBudget, setValidBudget }) => {
                         className='nuevo-presupuesto'
                         placeholder='Add your Budget'
                         value={budget}
-                        onChange={(e) => { setBudget(Number(e.target.value)) }}
+                        onChange={(e) => {
+                            setBudget(Number('' + e.target.value))
+                        }
+                        }
+                        onFocus={(e) => e.target.value === '0' && (e.target.value = '')}
 
                     />
 

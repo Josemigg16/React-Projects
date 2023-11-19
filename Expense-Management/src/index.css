@@ -189,6 +189,10 @@ header h1 {
     text-align: center;
 }
 
+.formulario input[type="number"].nuevo-presupuesto::placeholder{
+    color: var(--gris-claro) ;
+}
+
 .contenedor-presupuesto svg {
     width: 25rem;
 }
@@ -326,6 +330,18 @@ main {
     position: fixed;
     bottom: 5rem;
     right: 5rem;
+}
+
+@media (max-width: 890px) {
+    .nuevo-gasto{
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 768px){
+    .nuevo-gasto{
+        transform: scale(1.5);
+    }
 }
 
 .nuevo-gasto img {
