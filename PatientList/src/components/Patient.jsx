@@ -3,7 +3,7 @@ import React from 'react'
 const Patient = ({ item, setEditingPatient, deletePatient }) => {
 
     return (
-        <div className='py-5 bg-white mb-5 rounded-md cursor-pointer'>
+        <div className='py-5 bg-white mb-5 rounded-md'>
 
             <p className='font-bold uppercase px-5 py-2'>
                 Name: {""}

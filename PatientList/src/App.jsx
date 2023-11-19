@@ -4,7 +4,7 @@ import Patients from "./components/Patients"
 import { useState, useEffect } from "react"
 
 function App() {
-  const [list, setList] = useState([])
+  const [list, setList] = useState(JSON.parse(localStorage.getItem('patients')) ?? [])
   const [editingPatient, setEditingPatient] = useState({})
   const [patient, setPatient] = useState({
     name: "",
@@ -17,15 +17,6 @@ function App() {
     const deletedPatientList = list.filter(item => item.id !== id && item)
     setList(deletedPatientList)
   }
-
-  useEffect(() => {
-    const getLocalStorage = () => {
-      const patientsLocalStorage = JSON.parse(localStorage.getItem('patients')) ?? [];
-      setList(patientsLocalStorage);
-    };
-
-    getLocalStorage();
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('patients', JSON.stringify(list));

@@ -72,12 +72,12 @@ const Form = ({ list, setList, patient, setPatient, editingPatient, setEditingPa
                     patient={patient.symptoms} setPatient={setPatient}
                 />
                 <input type="submit" value={editingPatient.id ? 'Edit' : 'Add Patient'}
-                    className="bg-indigo-600 text-white font-bold text-center w-full rounded-3xl py-2 my-4 cursor-pointer"
+                    className="bg-indigo-600 text-white font-bold text-center w-full rounded-3xl py-2 my-4 cursor-pointer hover:bg-indigo-700"
                 />
 
                 {editingPatient.id && (
                     <input onClick={resetPatient} type="button" value="Exit"
-                        className="bg-indigo-600 text-white font-bold text-center w-full rounded-3xl py-2 mb-4 cursor-pointer"
+                        className="bg-indigo-600 text-white font-bold text-center w-full rounded-3xl py-2 mb-4 cursor-pointer hover:bg-indigo-700"
                     />
                 )
                 }
