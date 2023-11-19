@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     Number(localStorage.setItem('budget', budget))
-  }, [budget])
+  }, [validBudget])
 
   useEffect(() => {
     localStorage.setItem('expenses', JSON.stringify(expenses))

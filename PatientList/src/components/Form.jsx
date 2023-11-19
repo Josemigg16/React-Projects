@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import Input from "./Input"
-import ErrorMessage from "./errorMessage"
+import ErrorMessage from "./ErrorMessage"
 const Form = ({ list, setList, patient, setPatient, editingPatient, setEditingPatient }) => {
 
     const [errorMessage, setErrorMessage] = useState({

@@ -11,6 +11,7 @@ const NewBudget = ({ budget, setBudget, setValidBudget }) => {
             setMessage('Budget is not valid')
             return
         }
+        setBudget(Number(budget))
         console.log(budget)
         setMessage('')
         setValidBudget(true)
@@ -25,10 +26,10 @@ const NewBudget = ({ budget, setBudget, setValidBudget }) => {
                         className='nuevo-presupuesto'
                         placeholder='Add your Budget'
                         value={budget}
+                        step="any"
                         onChange={(e) => {
-                            setBudget(Number('' + e.target.value))
-                        }
-                        }
+                            setBudget('' + e.target.value)
+                        }}
                         onFocus={(e) => e.target.value === '0' && (e.target.value = '')}
 
                     />
