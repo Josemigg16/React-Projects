@@ -3,7 +3,7 @@ import Patient from "./Patient"
 const Patients = ({ list, setEditingPatient, deletePatient }) => {
 
     return (
-        <section className="w-3/5">
+        <section className="md:w-3/5">
             <h2 className="font-bold text-3xl text-center">Patient {''}
                 <span className="text-indigo-600 ">List</span>
             </h2>
