@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <Header />
-      <article className="flex mt-14">
+      <article className="md:flex mt-14">
         <Form list={list} setList={setList} patient={patient} setPatient={setPatient} editingPatient={editingPatient} setEditingPatient={setEditingPatient} />
         <Patients list={list} setEditingPatient={setEditingPatient} deletePatient={deletePatient} />
       </article>
