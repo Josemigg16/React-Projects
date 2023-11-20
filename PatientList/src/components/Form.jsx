@@ -47,7 +47,7 @@ const Form = ({ list, setList, patient, setPatient, editingPatient, setEditingPa
     }, [editingPatient])
 
     return (
-        <section className="w-2/5">
+        <section className="md:w-2/5">
             <h2 className="font-bold text-3xl text-center">Add Patients and {""}
                 <span className="text-indigo-600 ">Admin it</span>
             </h2>
