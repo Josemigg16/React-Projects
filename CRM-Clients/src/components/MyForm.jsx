@@ -1,4 +1,4 @@
-const MyForm = ({ cliente }) => {
+const MyForm = () => {
     return (
         <>
             <div className="mb-4">
